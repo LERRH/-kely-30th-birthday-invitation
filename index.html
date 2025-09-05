@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Kely cumple 30! - Invitación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .invitation-card {
+            max-width: 400px;
+            width: 100%;
+            min-height: 700px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(201, 169, 97, 0.2);
+            animation: fadeIn 1s ease-out;
+            overflow: hidden;
+        }
+        
+        .particles-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: radial-gradient(ellipse at center top, 
+                rgba(201, 169, 97, 0.3) 0%, 
+                rgba(201, 169, 97, 0.1) 40%, 
+                transparent 70%);
+            pointer-events: none;
+        }
+        
+        .particles-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: radial-gradient(ellipse at center bottom, 
+                rgba(201, 169, 97, 0.3) 0%, 
+                rgba(201, 169, 97, 0.1) 40%, 
+                transparent 70%);
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .feliz-cumpleanos {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 75px;
+            font-weight: 300;
+            font-style: italic;
+            background: linear-gradient(135deg, #c9a961 0%, #b8956f 50%, #a67c52 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 1;
+            text-shadow: 0 2px 10px rgba(201, 169, 97, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .invitation-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: #ffffff;
+            line-height: 1.5;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            letter-spacing: 0.3px;
+        }
+        
+        .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            font-weight: 300;
+            font-style: italic;
+            background: linear-gradient(135deg, #c9a961 0%, #b8956f 50%, #a67c52 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+        }
+        
+        .event-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: nowrap;
+            gap: 0;
+        }
+        
+        .detail-item {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 300;
+            padding: 0 12px;
+            letter-spacing: 0.5px;
+        }
+        
+        .divider {
+            width: 1px;
+            height: 18px;
+            background: #c9a961;
+            opacity: 0.7;
+        }
+        
+        .dress-code {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 35px;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+        
+        .dress-code-highlight {
+            color: #c9a961;
+            font-weight: 500;
+        }
+        
+        .location-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .location-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #c9a961;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        .location-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 97, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .location-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 169, 97, 0.3);
+            border-color: #b8956f;
+            color: #c9a961;
+        }
+        
+        .location-btn:hover::before {
+            left: 100%;
+        }
+        
+        .location-label {
+            color: #c9a961;
+            font-weight: 600;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-20px) scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { 
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            100% { 
+                transform: scale(1.3);
+                opacity: 1;
+            }
+        }
+        
+        /* Fallback para navegadores que no soporten la tipografía */
+        .cursive-fallback {
+            font-family: 'Monsieur La Doulaise', 'Dancing Script', 'Great Vibes', 'Alex Brush', cursive !important;
+        }
+        
+        @media (max-width: 480px) {
+            .invitation-card {
+                max-width: 350px;
+                padding: 40px 30px;
+                min-height: 650px;
+            }
+            
+            .feliz-cumpleanos {
+                font-size: 60px;
+            }
+            
+            .name {
+                font-size: 42px;
+            }
+            
+            .event-details {
+                flex-direction: row;
+                gap: 0;
+            }
+            
+            .detail-item {
+                font-size: 13px;
+                padding: 0 10px;
+            }
+            
+            .location-btn {
+                padding: 12px 25px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        <div class="particles-top"></div>
+        <div class="particles-bottom"></div>
+        
+        <div class="feliz-cumpleanos cursive-fallback">Feliz cumpleaños</div>
+        
+        <div class="invitation-text">
+            Te invito a celebrar junto conmigo mis 30 años
+        </div>
+        
+        <div class="name cursive-fallback">Kely Suni Mendoza</div>
+        
+        <div class="event-details">
+            <div class="detail-item">Viernes</div>
+            <div class="divider"></div>
+            <div class="detail-item">07 de octubre</div>
+            <div class="divider"></div>
+            <div class="detail-item">7 pm</div>
+        </div>
+        
+        <div class="dress-code">
+            Dresscode: <span class="dress-code-highlight">sport elegante</span>
+        </div>
+        
+        <div class="location-container">
+            <a href="https://maps.app.goo.gl/WWzQL7QMAZeG8j7bA" target="_blank" class="location-btn">
+                <span class="location-label">Ubicación:</span> clic aquí
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Verificar si la tipografía se cargó correctamente
+        document.fonts.ready.then(function() {
+            console.log('Fonts loaded');
+            
+            // Forzar actualización de elementos con tipografía cursiva
+            const cursiveElements = document.querySelectorAll('.cursive-fallback');
+            cursiveElements.forEach(element => {
+                element.style.fontFamily = "'Monsieur La Doulaise', cursive";
+            });
+        });
+        
+        // Crear partículas doradas animadas
+        function createParticles() {
+            const card = document.querySelector('.invitation-card');
+            const particleCount = 25;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Tamaños aleatorios
+                const size = Math.random() * 8 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Posiciones aleatorias
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Colores dorados más elegantes
+                const goldShades = ['#c9a961', '#b8956f', '#a67c52', '#926b47'];
+                particle.style.background = goldShades[Math.floor(Math.random() * goldShades.length)];
+                
+                // Opacidad aleatoria
+                particle.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                // Animación con delay aleatorio
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                card.appendChild(particle);
+            }
+        }
+        
+        // Crear partículas al cargar
+        window.addEventListener('load', function() {
+            createParticles();
+            createDenseParticles();
+        });
+        
+        // Efecto de partículas en movimiento del mouse
+        document.addEventListener('mousemove', (e) => {
+            const rect = document.querySelector('.invitation-card').getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'absolute';
+                sparkle.style.left = x + 'px';
+                sparkle.style.top = y + 'px';
+                sparkle.style.width = '3px';
+                sparkle.style.height = '3px';
+                sparkle.style.background = '#c9a961';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.animation = 'float 1s ease-out forwards';
+                sparkle.style.zIndex = '1000';
+                
+                document.querySelector('.invitation-card').appendChild(sparkle);
+                
+                setTimeout(() => {
+                    if (sparkle.parentNode) {
+                        sparkle.parentNode.removeChild(sparkle);
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
